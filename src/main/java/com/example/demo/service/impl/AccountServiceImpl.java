@@ -16,9 +16,12 @@ public class AccountServiceImpl implements AccountService {
 
     @Transactional /*简单事务的应用*/
     @Override
-    public void transferMoney(String outAccountId, String inAccountId, BigDecimal money) {
-        testSqlDao.minusMoney(outAccountId, money);
+    public void transferMoney(String outAccountId, String inAccountId, String money) {
+        BigDecimal bigDecimal = BigDecimal.valueOf(Double.parseDouble(money));
+        // 精确到0.01，其余位直接删除
+        BigDecimal result = bigDecimal.setScale(2, BigDecimal.ROUND_DOWN);
+        testSqlDao.minusMoney(outAccountId, result);
 //        int a = 1/0;
-        testSqlDao.addMoney(inAccountId, money);
+        testSqlDao.addMoney(inAccountId, result);
     }
 }

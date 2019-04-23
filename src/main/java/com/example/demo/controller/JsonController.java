@@ -26,14 +26,8 @@ public class JsonController {
     @RequestMapping("/transferMoney")
     String transferMoney(String outAccountId, String inAccountId, String money) {
         try {
-            BigDecimal bigDecimal = BigDecimal.valueOf(Double.parseDouble(money));
-            // 精确到0.01，其余位直接删除
-            BigDecimal result = bigDecimal.setScale(2, BigDecimal.ROUND_DOWN);
-
-            accountService.transferMoney(outAccountId, inAccountId, result);
-
+            accountService.transferMoney(outAccountId, inAccountId, money);
             return "success";
-
         } catch (Exception e) {
             e.printStackTrace();
             return "fail";
