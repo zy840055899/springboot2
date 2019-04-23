@@ -11,5 +11,12 @@
         select 8 from dual
     </select>
 
+    <update id="addMoney" >
+        update account set sum=sum+#{money} where accountId=#{id}
+    </update>
+
+    <update id="minusMoney" >
+        update account set sum=sum-#{money} where accountId=#{id}
+    </update>
 
 </mapper>
