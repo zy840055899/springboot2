@@ -1,14 +1,20 @@
 package com.example.demo.controller;
 
+import com.example.demo.dao.TestSqlDao;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 @RestController
 public class JsonController {
 
-    @RequestMapping("/")
+    @Resource
+    private TestSqlDao testSqlDao;
+
+    @RequestMapping("/testSql")
     String home() {
-        return "123123123";
+        return testSqlDao.testSql() + "";
     }
 
 }
