@@ -1,9 +1,19 @@
 package com.example.demo.pojo;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private Long id;
     private String userName;
     private String note;
+
+    public User() {
+    }
+
+    public User(Long id, String userName) {
+        this.id = id;
+        this.userName = userName;
+    }
 
     public Long getId() {
         return id;
