@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.ProductDao">
+    <!--<resultMap id="xxxResultMap" type="com.xxx.entity.User" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+    </resultMap>-->
+
+    <!--获取商品-->
+    <select id="getSingleProduct" parameterType="long" resultType="com.example.demo.pojo.Product">
+        select * from product where id=#{id}
+    </select>
+
+    <!--减库存-->
+    <update id="decreaseStock">
+        update product set stock = stock-#{quantity} where id=#{id}
+    </update>
+
+
+
+</mapper>
