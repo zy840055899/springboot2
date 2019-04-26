@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dao.TestSqlDao;
 import com.example.demo.service.AccountService;
+import com.example.demo.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,9 @@ public class JsonController {
 
     @Autowired
     private AccountService accountService;
+
+    @Autowired
+    private PurchaseService purchaseService;
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -37,6 +41,14 @@ public class JsonController {
         return stringRedisTemplate.opsForValue().get("k5");
     }
 
+    /**
+     * 测试简单事务
+     *
+     * @param outAccountId
+     * @param inAccountId
+     * @param money
+     * @return
+     */
     @RequestMapping("/transferMoney")
     String transferMoney(String outAccountId, String inAccountId, String money) {
         try {
@@ -48,5 +60,13 @@ public class JsonController {
         }
     }
 
+    @RequestMapping("/purchase")
+    String purchase(Long userId, Long productId, Integer quantity) {
+        boolean result = purchaseService.purchaseProduct(userId, productId, quantity);
+        if(result){
+            return "success";
+        }
+        return "fail";
+    }
 
 }

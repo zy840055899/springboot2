@@ -11,5 +11,9 @@ public class JspController {
         return "index";
     }
 
+    @RequestMapping("/purchaseJsp")
+    String purchaseJsp() {
+        return "purchase";
+    }
 
 }

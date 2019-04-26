@@ -4,6 +4,6 @@ import com.example.demo.pojo.PurchaseRecord;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface PurcharseRecordDao {
+public interface PurchaseRecordDao {
     int addPurchaseRecord(PurchaseRecord record);
 }
