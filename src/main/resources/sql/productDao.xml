@@ -9,13 +9,22 @@
 
     <!--获取商品-->
     <select id="getSingleProduct" parameterType="long" resultType="com.example.demo.pojo.Product">
-        select * from product where id=#{id} for update
+        select * from product where id=#{id}
+        /*for update 悲观锁*/
     </select>
 
     <!--减库存-->
     <update id="decreaseStock">
+        /*悲观锁*/
         update product set stock = stock-#{quantity} where id=#{id}
     </update>
+
+    <!--减库存-->
+    <update id="decreaseStock2">
+        /*乐观锁*/
+        update product set stock = stock-#{quantity}, version=version+1 where id=#{id} and version=#{version}
+    </update>
+
 
 
 

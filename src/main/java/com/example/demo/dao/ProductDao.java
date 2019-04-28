@@ -10,4 +10,5 @@ import java.math.BigDecimal;
 public interface ProductDao {
     Product getSingleProduct(long id);
     int decreaseStock(@Param("id") long productId, @Param("quantity") int quantity);
+    int decreaseStock2(@Param("id") long productId, @Param("quantity") int quantity, @Param("version")long version);
 }
