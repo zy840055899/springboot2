@@ -1,4 +1,3 @@
-
 CREATE TABLE test.account
 (
     accountId varchar(40) PRIMARY KEY NOT NULL,
@@ -7,7 +6,6 @@ CREATE TABLE test.account
 );
 INSERT INTO test.account (accountId, accountName, sum) VALUES ('1', '张三', 10.00);
 INSERT INTO test.account (accountId, accountName, sum) VALUES ('2', '李四', 180.00);
-
 CREATE TABLE test.product
 (
     id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -18,7 +16,6 @@ CREATE TABLE test.product
     note varchar(200) COMMENT '备注'
 );
 INSERT INTO test.product (id, productName, stock, price, version, note) VALUES (1, '默认产品1', 100, 9.99, 1, '无');
-
 CREATE TABLE test.purchaserecord
 (
     id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -30,8 +27,18 @@ CREATE TABLE test.purchaserecord
     purchaseDate datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
     note varchar(200)
 );
-
 INSERT INTO test.purchaserecord (id, userId, productId, price, quantity, sum, purchaseDate, note) VALUES (1, 1001, 1, 1.00, 10, 99.90, '2019-04-26 10:10:08', null);
-
-
-
+CREATE TABLE test.role
+(
+    id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    role varchar(30) NOT NULL
+);
+CREATE TABLE test.user
+(
+    id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    username varchar(50) NOT NULL,
+    password varchar(50) NOT NULL,
+    role varchar(20)
+);
+INSERT INTO test.user (id, username, password, role) VALUES (1, 'zhangsan', '1234', 'user');
+INSERT INTO test.user (id, username, password, role) VALUES (2, 'lisi', '1234', 'admin');

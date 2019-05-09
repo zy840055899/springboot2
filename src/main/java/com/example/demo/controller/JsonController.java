@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.dao.TestSqlDao;
+import com.example.demo.pojo.User;
 import com.example.demo.service.AccountService;
 import com.example.demo.service.PurchaseService;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 @RestController
+@RequestMapping("/test")
 public class JsonController {
 
     @Resource
     private TestSqlDao testSqlDao;
+
+    @Resource
+    private UserService userService;
 
     @Autowired
     private AccountService accountService;
@@ -26,8 +32,13 @@ public class JsonController {
     private StringRedisTemplate stringRedisTemplate;
 
     @RequestMapping("/testSql")
-    String home() {
+    String testSql() {
         return testSqlDao.testSql() + "";
+    }
+
+    @RequestMapping("/testSql2")
+    User testSql2() {
+        return userService.findUserByUserName("zhangsan");
     }
 
     /**

@@ -3,8 +3,11 @@ package com.example.demo.pojo;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    private static final long serialVersionUID = -8057536578595139988L;
     private Long id;
     private String userName;
+    private String password;
+    private int role;
     private String note;
 
     public User() {
@@ -13,6 +16,22 @@ public class User implements Serializable {
     public User(Long id, String userName) {
         this.id = id;
         this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 
     public Long getId() {

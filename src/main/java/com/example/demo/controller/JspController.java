@@ -8,6 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class JspController {
 
+    @RequestMapping("/login")
+    String login(Model model) {
+        model.addAttribute("hello", "hello world");
+        return "login";
+    }
+
+
     @RequestMapping("/index")
     String index(Model model) {
         model.addAttribute("hello", "hello world");
