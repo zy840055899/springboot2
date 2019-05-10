@@ -1,6 +1,5 @@
 package com.example.demo.config;
 
-
 import com.example.demo.pojo.User;
 import com.example.demo.service.UserService;
 import org.apache.shiro.authc.*;
@@ -41,8 +40,8 @@ public class MyRealm extends AuthorizingRealm {
             User user = userService.findUserByUserName(username);
 
             authorizationInfo.addRole("user");
-            authorizationInfo.addStringPermission("view");
-            authorizationInfo.addStringPermission("add");
+            authorizationInfo.addStringPermission("user:view");
+            authorizationInfo.addStringPermission("user:add");
         } catch (Exception e) {
             log.error("授权错误{}", e.getMessage());
             e.printStackTrace();
