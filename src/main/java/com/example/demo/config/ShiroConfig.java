@@ -62,7 +62,6 @@ public class ShiroConfig {
         HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
         hashedCredentialsMatcher.setHashAlgorithmName("md5");//散列算法:这里使用MD5算法;
         hashedCredentialsMatcher.setHashIterations(1);//散列的次数，比如散列两次，相当于 md5(md5(""));
-        hashedCredentialsMatcher.setStoredCredentialsHexEncoded(true);
         return hashedCredentialsMatcher;
     }
 
@@ -101,11 +100,11 @@ public class ShiroConfig {
         SimpleMappingExceptionResolver r = new SimpleMappingExceptionResolver();
         Properties mappings = new Properties();
         mappings.setProperty("DatabaseException", "databaseError");//数据库异常处理
-        mappings.setProperty("UnauthorizedException", "/user/403");
+        mappings.setProperty("UnauthorizedException", "403");
         r.setExceptionMappings(mappings);  // None by default
         r.setDefaultErrorView("error");    // No default
         r.setExceptionAttribute("exception");     // Default is "exception"
-        //r.setWarnLogCategory("example.MvcLogger");     // No default
+        r.setWarnLogCategory("example.MvcLogger");     // No default
         return r;
     }
 }

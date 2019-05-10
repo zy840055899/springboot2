@@ -25,7 +25,7 @@ public class HomeController {
     @RequestMapping("/403")
     public String unauthorizedRole() {
         System.out.println("------没有权限-------");
-        return "/user/403";
+        return "403";
     }
 
     @GetMapping("login")
