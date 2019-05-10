@@ -23,10 +23,10 @@ public class LoginServiceImpl implements LoginService {
         }
         String msg = "";
         // 1、获取Subject实例对象
-        Subject currentUser = SecurityUtils.getSubject();
+        Subject subject = SecurityUtils.getSubject();
 
 //        // 2、判断当前用户是否登录
-//        if (currentUser.isAuthenticated() == false) {
+//        if (subject.isAuthenticated() == false) {
 //
 //        }
 
@@ -35,8 +35,8 @@ public class LoginServiceImpl implements LoginService {
 
         // 4、认证
         try {
-            currentUser.login(token);// 传到MyAuthorizingRealm类中的方法进行认证★
-            Session session = currentUser.getSession();
+            subject.login(token);// 传到MyAuthorizingRealm类中的方法进行认证★
+            Session session = subject.getSession();
             session.setAttribute("userName", userName);
             loginResult.setLoginR(true);
             return loginResult;
