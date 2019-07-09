@@ -41,13 +41,13 @@ public class MyShiroConfig {
         DefaultShiroFilterChainDefinition chain = new DefaultShiroFilterChainDefinition();
 
         // 设置哪些请求可以匿名访问
-        chain.addPathDefinition("/login/**", "anon");
-
-        chain.addPathDefinition("/test/**", "anon");
-        chain.addPathDefinition("/logout", "logout");
-
-        //除了以上的请求外，其它请求都需要登录
-        chain.addPathDefinition("/**", "authc");
+//        chain.addPathDefinition("/login/**", "anon");
+//        chain.addPathDefinition("/test/**", "anon");
+//        chain.addPathDefinition("/message/**", "anon");
+//        chain.addPathDefinition("/logout", "logout");
+//
+//        //除了以上的请求外，其它请求都需要登录
+//        chain.addPathDefinition("/**", "authc");
         return chain;
     }
 
