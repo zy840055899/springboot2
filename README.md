@@ -10,3 +10,4 @@ https://blog.csdn.net/wu_boy/article/details/84898455
 
 定时任务：ScheduleService
 
+websocket简单使用：https://blog.csdn.net/clmmei_123/article/details/82822456
