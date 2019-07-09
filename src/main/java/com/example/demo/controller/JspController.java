@@ -13,4 +13,9 @@ public class JspController {
         return "purchase";
     }
 
+    @RequestMapping("/websocket")
+    String websocket() {
+        return "websocket";
+    }
+
 }
